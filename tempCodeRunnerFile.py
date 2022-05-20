@@ -33,16 +33,12 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-
-            # When the key is pressed.
-            elif event.type == pygame.KEYDOWN: 
+            elif event.type == pygame.KEYDOWN: # When the key is pressed
                 if event.key == pygame.K_RIGHT:
                     self.ship.moving_right = True
                 elif event.key == pygame.K_LEFT:
                     self.ship.moving_left = True
-
-            # When the key is released.
-            elif event.type == pygame.KEYUP:
+            elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     self.ship.moving_right = False
                 elif event.key == pygame.K_LEFT:
