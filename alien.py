@@ -1,4 +1,3 @@
-from re import S
 import pygame
 from pygame.sprite import Sprite
 
