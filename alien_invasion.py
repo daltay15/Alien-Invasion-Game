@@ -70,26 +70,36 @@ class AlienInvasion:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_play_button(mouse_pos)
     
-    def _check_play_button(self, mouse_pos):
+    def _check_play_button(self, mouse_pos=None):
         """Start a new game when the player clicks Play"""
         # Fixes play button still accepting clicks and resetting game
-        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
-        if button_clicked and not self.stats.game_active:
-            # Reset the game statistics.
-            self.stats.reset_stats()
-            self.stats.game_active = True
+        if mouse_pos:
+            mouse_clicked = self.play_button.rect.collidepoint(mouse_pos)
+            if mouse_clicked and not self.stats.game_active:
+                self._start_game()
 
-            # Get rid of any remaining aliens and bullets.
-            self.aliens.empty()
-            self.bullets.empty()
+        # If the user presses 'p' start the game.   
+        elif not self.stats.game_active:
+            self._start_game()
 
-            # Create a new fleet and center the ship.
-            self._create_fleet()
-            self.ship._center_ship()
-        
-            # Hide the mouse cursor.
-            pygame.mouse.set_visible(False)
+    def _start_game(self):
+        """Starts the game if the user either clicks play or presses 'p'."""
+        # Reset the game settings.
+        self.settings.initialize_dynamic_settings()
+        # Reset the game statistics.
+        self.stats.reset_stats()
+        self.stats.game_active = True
 
+        # Get rid of any remaining aliens and bullets.
+        self.aliens.empty()
+        self.bullets.empty()
+
+        # Create a new fleet and center the ship.
+        self._create_fleet()
+        self.ship._center_ship()
+    
+        # Hide the mouse cursor.
+        pygame.mouse.set_visible(False)
 
     def _check_keydown_events(self, event):
         """Respond to key presses."""
@@ -99,6 +109,8 @@ class AlienInvasion:
             self.ship.moving_left = True
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
+        elif event.key == pygame.K_p:
+            self._check_play_button()
         elif event.key == pygame.K_q:
             sys.exit()
 
@@ -138,7 +150,8 @@ class AlienInvasion:
         if not self.aliens:
             # Destroy existing bullets and create a new fleet.
             self.bullets.empty()
-            self._create_fleet()              
+            self._create_fleet()        
+            self.settings.inscrease_speed()      
     
     def _create_fleet(self):
         """Create a fleet of aliens."""
