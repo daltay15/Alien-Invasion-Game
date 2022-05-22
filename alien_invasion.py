@@ -1,3 +1,14 @@
+"""
+To make executable run "pyinstaller -F alien_invasion.py --noconsole" 
+    noconsole will not pop up terminal when running.
+
+Future changes:
+                Make high score save to file
+                Add instructions before player starts the game
+                Add more than one ship that the player can fire from at once
+"""
+
+
 import sys
 import pygame
 from time import sleep
