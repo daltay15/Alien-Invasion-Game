@@ -2,3 +2,17 @@
 *.pyc
 __pycache__/ship.cpython-39.pyc
 *.exe
+build/alien_invasion/xref-alien_invasion.html
+build/alien_invasion/warn-alien_invasion.txt
+build/alien_invasion/Tree-02.toc
+build/alien_invasion/Tree-01.toc
+build/alien_invasion/Tree-00.toc
+build/alien_invasion/PYZ-00.toc
+build/alien_invasion/PYZ-00.pyz
+build/alien_invasion/PKG-00.toc
+build/alien_invasion/localpycos/struct.pyo
+build/alien_invasion/EXE-00.toc
+build/alien_invasion/base_library.zip
+build/alien_invasion/Analysis-00.toc
+build/alien_invasion/alien_invasion.pkg
+build/alien_invasion/alien_invasion.exe.manifest
