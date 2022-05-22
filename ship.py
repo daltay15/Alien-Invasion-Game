@@ -11,7 +11,7 @@ class Ship(Sprite):
         self.screen_rect = ai_game.screen.get_rect()
 
         # Load the ship image and get its rect.
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load('C:/Users/dalta/Documents/Code/Python/Python Crash Course/Alien-Invasion-Game/images/ship.bmp')
         self.rect = self.image.get_rect()
 
         # Start each new ship at the bottom center of the screen.
